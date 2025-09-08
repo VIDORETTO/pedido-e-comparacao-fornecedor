@@ -1,0 +1,190 @@
+<html><head>
+<meta charset="utf-8"/>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Inter%3Awght%40400%3B500%3B600%3B700%3B900&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900" onload="this.rel='stylesheet'" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<title>Stitch Design</title>
+<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style type="text/tailwindcss">
+      :root {
+        --primary-color: #1173d4;
+        --secondary-color: #f0f2f4;
+        --text-primary: #111418;
+        --text-secondary: #617589;
+      }
+      .active-link {
+        color: var(--primary-color);
+        font-weight: 600;
+      }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800" style='font-family: Inter, "Noto Sans", sans-serif;'>
+<div class="relative flex size-full min-h-screen flex-col bg-white group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-gray-200 px-10 py-4">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-gray-900">
+<div class="w-8 h-8 text-[var(--primary-color)]">
+<svg fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z"></path>
+</svg>
+</div>
+<h2 class="text-xl font-bold tracking-tight">PriceWise</h2>
+</div>
+<nav class="flex items-center gap-6 text-sm">
+<a class="active-link" href="#">Dashboard</a>
+<a class="text-gray-600 hover:text-[var(--primary-color)]" href="#">Suppliers</a>
+<a class="text-gray-600 hover:text-[var(--primary-color)]" href="#">Items</a>
+<a class="text-gray-600 hover:text-[var(--primary-color)]" href="#">Reports</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<label class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">search</span>
+<input class="form-input w-full min-w-0 flex-1 resize-none overflow-hidden rounded-md border-gray-300 bg-white pl-10 pr-4 py-2 text-sm text-gray-900 placeholder-gray-500 focus:border-[var(--primary-color)] focus:ring-[var(--primary-color)]" placeholder="Search" value=""/>
+</label>
+<button class="relative rounded-md p-2 text-gray-600 hover:bg-gray-100 hover:text-gray-900">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1 right-1 h-2 w-2 rounded-full bg-red-500"></span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuALJohtNujFlSo_idv6tpTgAPbrgzxdUK5V4nJseZyh06z8bwYZu78kiqhtoQkBUQgHMu9GYF4syYCf2V4ZP15TgLPSTv1hXbbrwd2NrEsE38Zx56UVbvObRFhVBURetita-tN4NVRhTLyybfcJNdM5BHFlZNsQc1iLhKWXh8DSQzVej01xOw0U4QPCotdmPMdmT_OvwL89kgntqb6Q0ohruEkC4fQhq1hV7V_XI67VzHOAryfHzIKTpM4fug_Rck3EaplZ_ozFhvw");'></div>
+</div>
+</header>
+<main class="flex-1 bg-gray-50 px-10 py-8">
+<div class="mx-auto max-w-7xl">
+<div class="mb-8">
+<h1 class="text-3xl font-bold text-gray-900">Dashboard</h1>
+<p class="mt-1 text-sm text-gray-600">Overview of your price comparisons and savings.</p>
+</div>
+<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+<div class="rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
+<p class="text-sm font-medium text-gray-600">Total Savings</p>
+<p class="mt-2 text-3xl font-bold text-gray-900">$12,500</p>
+</div>
+<div class="rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
+<p class="text-sm font-medium text-gray-600">Items Compared</p>
+<p class="mt-2 text-3xl font-bold text-gray-900">350</p>
+</div>
+<div class="rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
+<p class="text-sm font-medium text-gray-600">Suppliers Analyzed</p>
+<p class="mt-2 text-3xl font-bold text-gray-900">15</p>
+</div>
+</div>
+<div class="mt-12">
+<div class="flex justify-between items-center mb-4">
+<h2 class="text-xl font-bold text-gray-900">Top Savings Opportunities</h2>
+<a class="text-sm font-medium text-[var(--primary-color)] hover:underline" href="#">View All</a>
+</div>
+<div class="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm">
+<div class="overflow-x-auto">
+<table class="min-w-full divide-y divide-gray-200">
+<thead class="bg-gray-50">
+<tr>
+<th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500" scope="col">Item</th>
+<th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500" scope="col">Supplier</th>
+<th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500" scope="col">Price</th>
+<th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500" scope="col">Quantity</th>
+<th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500" scope="col">Potential Savings</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-200 bg-white">
+<tr>
+<td class="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900">Office Chairs</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">Supplier A</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">$150</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">100</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm font-semibold text-green-600">$2,000</td>
+</tr>
+<tr>
+<td class="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900">Printer Paper</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">Supplier B</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">$25</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">500</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm font-semibold text-green-600">$1,500</td>
+</tr>
+<tr>
+<td class="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900">Cleaning Supplies</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">Supplier C</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">$75</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">200</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm font-semibold text-green-600">$1,200</td>
+</tr>
+<tr>
+<td class="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900">Coffee Beans</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">Supplier D</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">$12</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">1000</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm font-semibold text-green-600">$1,000</td>
+</tr>
+<tr>
+<td class="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900">Desk Lamps</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">Supplier E</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">$40</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">150</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm font-semibold text-green-600">$800</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="mt-12">
+<div class="flex justify-between items-center mb-4">
+<h2 class="text-xl font-bold text-gray-900">Price Change Alerts</h2>
+<a class="text-sm font-medium text-[var(--primary-color)] hover:underline" href="#">View All</a>
+</div>
+<div class="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm">
+<div class="overflow-x-auto">
+<table class="min-w-full divide-y divide-gray-200">
+<thead class="bg-gray-50">
+<tr>
+<th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500" scope="col">Item</th>
+<th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500" scope="col">Supplier</th>
+<th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500" scope="col">Old Price</th>
+<th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500" scope="col">New Price</th>
+<th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500" scope="col">Change</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-200 bg-white">
+<tr>
+<td class="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900">Office Chairs</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">Supplier A</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">$150</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">$160</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-red-600 font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-base">arrow_upward</span>
+<span>$10</span>
+</td>
+</tr>
+<tr>
+<td class="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900">Printer Paper</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">Supplier B</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">$25</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">$22</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-green-600 font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-base">arrow_downward</span>
+<span>$3</span>
+</td>
+</tr>
+<tr>
+<td class="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900">Cleaning Supplies</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">Supplier C</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">$75</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">$80</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-red-600 font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-base">arrow_upward</span>
+<span>$5</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+
+</body></html>
