@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+  <link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons1.css">
+  <style>
+    body { padding: 10px; font-family: Arial, sans-serif; }
+    .container { display: flex; flex-direction: column; gap: 20px; }
+    fieldset { border: 1px solid #ccc; border-radius: 4px; padding: 10px; }
+    legend { font-weight: bold; }
+    .form-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .form-row label { width: 120px; font-size: 12px; }
+    .form-row input, .form-row select { width: 100%; box-sizing: border-box; }
+    .col-input { width: 50px !important; text-align: center; }
+    .supplier-box { border: 1px solid #ddd; padding: 10px; margin-top: 10px; border-radius: 4px; background-color: #f9f9f9; }
+    .supplier-header { display: flex; justify-content: space-between; align-items: center; font-weight: bold; margin-bottom: 10px; }
+    .button-bar { margin-top: 20px; display: flex; justify-content: space-between; }
+    #status { margin-top: 15px; font-style: italic; color: #555; }
+    .remove-btn { cursor: pointer; color: red; font-weight: bold; }
+    .help-text { font-size: 11px; color: #777; margin-top: -5px; margin-bottom: 8px; padding-left: 128px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <fieldset>
+      <legend>1. Base de Itens</legend>
+      <div class="form-row">
+        <label for="base-sheet">Aba da Base</label>
+        <select id="base-sheet"></select>
+      </div>
+      <div class="form-row">
+        <label for="base-code-col">Coluna Código</label>
+        <input type="text" id="base-code-col" class="col-input">
+      </div>
+      <div class="form-row">
+        <label for="base-brand-col">Coluna Marca</label>
+        <input type="text" id="base-brand-col" class="col-input">
+      </div>
+      <div class="form-row">
+        <label for="base-qty-col">Coluna Quantidade</label>
+        <input type="text" id="base-qty-col" class="col-input">
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>2. Fornecedores (mín. 2)</legend>
+      <div id="suppliers-list"></div>
+      <button id="add-supplier">Adicionar Fornecedor</button>
+    </fieldset>
+
+    <fieldset>
+      <legend>3. Opções e Relatório</legend>
+      <div class="form-row">
+        <label for="report-name">Nome do Relatório</label>
+        <input type="text" id="report-name" value="Comparação">
+      </div>
+      <div class="form-row">
+        <input type="checkbox" id="normalize-code" checked>
+        <label for="normalize-code" style="width: auto;">Normalizar Código (remove espaços/símbolos)</label>
+      </div>
+      <div class="form-row">
+        <input type="checkbox" id="normalize-brand" checked>
+        <label for="normalize-brand" style="width: auto;">Normalizar Marca (remove acentos/símbolos)</label>
+      </div>
+    </fieldset>
+    
+    <div class="button-bar">
+      <button class="action" id="compare-btn">Comparar Preços</button>
+    </div>
+    <div id="status"></div>
+  </div>
+
+  <!-- Template for a single supplier entry -->
+  <template id="supplier-template">
+    <div class="supplier-box">
+      <div class="supplier-header">
+        <span>Fornecedor</span>
+        <span class="remove-btn" title="Remover Fornecedor">X</span>
+      </div>
+      <div class="form-row">
+        <label>Aba do Fornecedor</label>
+        <select name="sheetName"></select>
+      </div>
+      <div class="form-row">
+        <label>Coluna Código</label>
+        <input type="text" name="codeCol" class="col-input">
+      </div>
+       <div class="form-row">
+        <label>Coluna Marca</label>
+        <input type="text" name="brandCol" class="col-input">
+      </div>
+      <div class="form-row">
+        <label>Coluna Preço</label>
+        <input type="text" name="priceCol" class="col-input">
+      </div>
+      <div class="form-row">
+        <label>Coluna ID (Opcional)</label>
+        <input type="text" name="idCol" class="col-input">
+      </div>
+      <p class="help-text">ID usado para aplicar quantidades.</p>
+
+      <!-- NOVO CAMPO ADICIONADO AQUI -->
+      <div class="form-row">
+        <label>Coluna Quantidade (para Aplicar)</label>
+        <input type="text" name="qtyCol" class="col-input">
+      </div>
+      <p class="help-text">Onde escrever a qtd. sugerida.</p>
+
+    </div>
+  </template>
+
+  <script>
+    let sheetNames = [];
+
+    document.addEventListener('DOMContentLoaded', init);
+    document.getElementById('add-supplier').addEventListener('click', () => addSupplier());
+    document.getElementById('compare-btn').addEventListener('click', runComparison);
+    document.getElementById('suppliers-list').addEventListener('click', e => {
+      if (e.target.classList.contains('remove-btn')) {
+        e.target.closest('.supplier-box').remove();
+      }
+    });
+
+    function init() {
+      setStatus('Carregando dados...', true);
+      google.script.run
+        .withSuccessHandler(data => {
+          sheetNames = data.sheets;
+          populateSelect(document.getElementById('base-sheet'), sheetNames);
+          
+          if (data.lastConfig) {
+            loadConfig(data.lastConfig);
+          } else {
+            addSupplier();
+            addSupplier();
+          }
+          setStatus('');
+        })
+        .withFailureHandler(err => setStatus(`Erro: ${err.message}`))
+        .getInitialData();
+    }
+    
+    function addSupplier(data = {}) {
+      const template = document.getElementById('supplier-template');
+      const clone = template.content.cloneNode(true);
+      const select = clone.querySelector('select[name="sheetName"]');
+      populateSelect(select, sheetNames);
+      
+      if (data) {
+        select.value = data.sheetName || '';
+        clone.querySelector('[name=codeCol]').value  = data.codeCol || '';
+        clone.querySelector('[name=brandCol]').value = data.brandCol || '';
+        clone.querySelector('[name=priceCol]').value = data.priceCol || '';
+        clone.querySelector('[name=idCol]').value    = data.idCol || '';
+        clone.querySelector('[name=qtyCol]').value   = data.qtyCol || ''; // Carrega o novo campo
+      }
+      
+      document.getElementById('suppliers-list').appendChild(clone);
+    }
+    
+    function loadConfig(config) {
+        // Base
+        document.getElementById('base-sheet').value = config.baseItems.sheetName;
+        document.getElementById('base-code-col').value = config.baseItems.codeCol;
+        document.getElementById('base-brand-col').value = config.baseItems.brandCol;
+        document.getElementById('base-qty-col').value = config.baseItems.qtyCol;
+        // Options
+        document.getElementById('report-name').value = config.reportName;
+        document.getElementById('normalize-code').checked = !!config.normalizeCode;
+        document.getElementById('normalize-brand').checked = !!config.normalizeBrand;
+        // Suppliers
+        document.getElementById('suppliers-list').innerHTML = '';
+        if (config.suppliers && config.suppliers.length) {
+            config.suppliers.forEach(sup => addSupplier(sup));
+        } else {
+            addSupplier();
+            addSupplier();
+        }
+    }
+
+    function saveConfig() {
+        const suppliers = [];
+        document.querySelectorAll('#suppliers-list .supplier-box').forEach(row => {
+            suppliers.push({
+                sheetName: row.querySelector('[name=sheetName]').value,
+                codeCol:   row.querySelector('[name=codeCol]').value,
+                brandCol:  row.querySelector('[name=brandCol]').value,
+                priceCol:  row.querySelector('[name=priceCol]').value,
+                idCol:     row.querySelector('[name=idCol]').value,
+                qtyCol:    row.querySelector('[name=qtyCol]').value, // Salva o novo campo
+            });
+        });
+
+        return {
+            baseItems: {
+                sheetName: document.getElementById('base-sheet').value,
+                codeCol:   document.getElementById('base-code-col').value,
+                brandCol:  document.getElementById('base-brand-col').value,
+                qtyCol:    document.getElementById('base-qty-col').value,
+            },
+            suppliers,
+            reportName:     document.getElementById('report-name').value,
+            normalizeCode:  document.getElementById('normalize-code').checked,
+            normalizeBrand: document.getElementById('normalize-brand').checked,
+        };
+    }
+
+    function runComparison() {
+      const config = saveConfig();
+      setStatus('Comparando...', true);
+      google.script.run
+        .withSuccessHandler(result => {
+           const msg = `Relatórios "${result.reportSheet}" e "${result.uniqueSheet}" gerados. Total: ${result.totalItens} itens.`;
+           setStatus(msg);
+           google.script.host.close();
+        })
+        .withFailureHandler(err => setStatus(`Erro: ${err.message}`))
+        .compareFromConfig(config);
+    }
+    
+    function populateSelect(select, options) {
+      select.innerHTML = '';
+      options.forEach(opt => {
+        const option = document.createElement('option');
+        option.value = opt;
+        option.textContent = opt;
+        select.appendChild(option);
+      });
+    }
+    
+    function setStatus(msg, loading = false) {
+      document.getElementById('status').textContent = msg;
+      document.getElementById('compare-btn').disabled = loading;
+    }
+  </script>
+</body>
+</html>
