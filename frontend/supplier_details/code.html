@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8"/>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Inter%3Awght%40400%3B500%3B700%3B900&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900" onload="this.rel='stylesheet'" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<title>Stitch Design</title>
+<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style type="text/tailwindcss">
+      :root {
+        --primary-color: #1173d4;
+      }
+      .bg-primary {
+        background-color: var(--primary-color);
+      }
+      .text-primary {
+        color: var(--primary-color);
+      }
+      .border-primary {
+        border-color: var(--primary-color);
+      }
+    </style>
+</head>
+<body class="bg-gray-50">
+<div class="relative flex size-full min-h-screen flex-col group/design-root overflow-x-hidden" style='font-family: Inter, "Noto Sans", sans-serif;'>
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-gray-200 bg-white px-10 py-3">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-primary">
+<div class="size-8 text-primary">
+<svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M12.0799 24L4 19.2479L9.95537 8.75216L18.04 13.4961L18.0446 4H29.9554L29.96 13.4961L38.0446 8.75216L44 19.2479L35.92 24L44 28.7521L38.0446 39.2479L29.96 34.5039L29.9554 44H18.0446L18.04 34.5039L9.95537 39.2479L4 28.7521L12.0799 24Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-gray-800 text-lg font-bold leading-tight tracking-[-0.015em]">ProcurementPro</h2>
+</div>
+<div class="flex items-center gap-6">
+<a class="text-gray-600 hover:text-primary text-sm font-medium leading-normal" href="#">Dashboard</a>
+<a class="text-primary text-sm font-bold leading-normal" href="#">Suppliers</a>
+<a class="text-gray-600 hover:text-primary text-sm font-medium leading-normal" href="#">Orders</a>
+<a class="text-gray-600 hover:text-primary text-sm font-medium leading-normal" href="#">Reports</a>
+</div>
+</div>
+<div class="flex flex-1 justify-end gap-4">
+<label class="flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-md h-full">
+<div class="text-gray-500 flex border-none bg-gray-100 items-center justify-center pl-3 rounded-l-md border-r-0" data-icon="MagnifyingGlass" data-size="24px" data-weight="regular">
+<svg fill="currentColor" height="20px" viewBox="0 0 256 256" width="20px" xmlns="http://www.w3.org/2000/svg">
+<path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path>
+</svg>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-md text-gray-800 focus:outline-0 focus:ring-0 border-none bg-gray-100 focus:border-none h-full placeholder:text-gray-500 px-3 rounded-l-none border-l-0 text-sm font-normal leading-normal" placeholder="Search" value=""/>
+</div>
+</label>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBQJNsc3ACRZCyo2ep1kvsAHMrI4gYtfPWXZs0DG6aD8-ubYSb2dyK3RKZA86QHZvvU5yqcaqqS_aWvAmgYiG-w75RZm6chnOMZQgg3MzKNN2AJipAVWDSj8IKXbb5H-90qEqumzabaV1xLdxhVwnNp-ceO9eCKo52xGxzubAG-GtojsYbzDb1PHtpVy_WJYnreTwsgCrrg2Iw-3PrIIXYeUoJs25txXM7c5a_uEYd7wLs8OQmFItocjtORgkC9b3rxdkj8BuZJMMI");'></div>
+</div>
+</header>
+<main class="px-40 flex-1 py-8">
+<div class="layout-content-container flex flex-col max-w-[960px] flex-1 mx-auto">
+<div class="flex items-center gap-2 p-4 text-sm">
+<a class="text-gray-500 hover:text-primary font-medium leading-normal" href="#">Suppliers</a>
+<span class="text-gray-400 font-medium leading-normal">/</span>
+<span class="text-gray-800 font-medium leading-normal">Supplier Details</span>
+</div>
+<div class="flex flex-wrap justify-between items-center gap-3 p-4">
+<div class="flex flex-col gap-1">
+<p class="text-gray-900 text-3xl font-bold leading-tight">GlobalTech Solutions</p>
+<p class="text-gray-500 text-sm font-normal leading-normal">Supplier ID: 789456</p>
+</div>
+<button class="flex items-center gap-2 h-10 px-4 bg-primary text-white rounded-md text-sm font-medium">
+<span class="material-symbols-outlined"> edit </span>
+<span>Edit Supplier</span>
+</button>
+</div>
+<div class="border-b border-gray-200">
+<div class="flex px-4 gap-6">
+<a class="flex flex-col items-center justify-center border-b-2 border-primary text-primary py-3" href="#">
+<p class="text-sm font-semibold leading-normal">Overview</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-2 border-transparent text-gray-500 hover:text-primary hover:border-primary py-3" href="#">
+<p class="text-sm font-medium leading-normal">Pricing History</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-2 border-transparent text-gray-500 hover:text-primary hover:border-primary py-3" href="#">
+<p class="text-sm font-medium leading-normal">Performance</p>
+</a>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 p-4 mt-6">
+<div class="md:col-span-1 flex flex-col gap-6">
+<div class="bg-white p-6 rounded-lg border border-gray-200">
+<h2 class="text-gray-800 text-lg font-bold leading-tight mb-4">Contact Information</h2>
+<div class="space-y-4 text-sm">
+<div class="flex justify-between">
+<p class="text-gray-500">Contact Name</p>
+<p class="text-gray-800 font-medium">Emily Carter</p>
+</div>
+<div class="flex justify-between">
+<p class="text-gray-500">Email</p>
+<p class="text-gray-800 font-medium">emily.carter@globaltech.com</p>
+</div>
+<div class="flex justify-between">
+<p class="text-gray-500">Phone</p>
+<p class="text-gray-800 font-medium">+1-555-123-4567</p>
+</div>
+<div class="flex flex-col">
+<p class="text-gray-500">Address</p>
+<p class="text-gray-800 font-medium text-right">123 Main Street, Anytown, USA</p>
+</div>
+</div>
+</div>
+<div class="bg-white p-6 rounded-lg border border-gray-200">
+<h2 class="text-gray-800 text-lg font-bold leading-tight mb-4">Supplier Performance</h2>
+<div class="space-y-4">
+<div class="flex flex-col gap-1">
+<p class="text-gray-600 text-sm font-medium">On-Time Delivery Rate</p>
+<p class="text-gray-900 text-2xl font-bold">98%</p>
+</div>
+<div class="flex flex-col gap-1">
+<p class="text-gray-600 text-sm font-medium">Order Accuracy</p>
+<p class="text-gray-900 text-2xl font-bold">99.5%</p>
+</div>
+<div class="flex flex-col gap-1">
+<p class="text-gray-600 text-sm font-medium">Average Lead Time</p>
+<p class="text-gray-900 text-2xl font-bold">5 Days</p>
+</div>
+</div>
+</div>
+</div>
+<div class="md:col-span-2 bg-white p-6 rounded-lg border border-gray-200">
+<h2 class="text-gray-800 text-lg font-bold leading-tight mb-4">Recent Orders</h2>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-gray-50 border-b border-gray-200">
+<th class="px-4 py-3 text-left text-gray-600 text-xs font-semibold uppercase tracking-wider">Order ID</th>
+<th class="px-4 py-3 text-left text-gray-600 text-xs font-semibold uppercase tracking-wider">Date</th>
+<th class="px-4 py-3 text-left text-gray-600 text-xs font-semibold uppercase tracking-wider">Total Items</th>
+<th class="px-4 py-3 text-left text-gray-600 text-xs font-semibold uppercase tracking-wider">Status</th>
+<th class="px-4 py-3 text-left text-gray-600 text-xs font-semibold uppercase tracking-wider">Total Value</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-200">
+<tr>
+<td class="px-4 py-3 text-sm text-gray-800 font-medium">ORD-2023-001</td>
+<td class="px-4 py-3 text-sm text-gray-500">2023-08-15</td>
+<td class="px-4 py-3 text-sm text-gray-500">15</td>
+<td class="px-4 py-3 text-sm">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800"> Delivered </span>
+</td>
+<td class="px-4 py-3 text-sm text-gray-500">$5,000</td>
+</tr>
+<tr>
+<td class="px-4 py-3 text-sm text-gray-800 font-medium">ORD-2023-002</td>
+<td class="px-4 py-3 text-sm text-gray-500">2023-09-02</td>
+<td class="px-4 py-3 text-sm text-gray-500">20</td>
+<td class="px-4 py-3 text-sm">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800"> Shipped </span>
+</td>
+<td class="px-4 py-3 text-sm text-gray-500">$7,500</td>
+</tr>
+<tr>
+<td class="px-4 py-3 text-sm text-gray-800 font-medium">ORD-2023-003</td>
+<td class="px-4 py-3 text-sm text-gray-500">2023-09-18</td>
+<td class="px-4 py-3 text-sm text-gray-500">10</td>
+<td class="px-4 py-3 text-sm">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800"> Delivered </span>
+</td>
+<td class="px-4 py-3 text-sm text-gray-500">$3,200</td>
+</tr>
+<tr>
+<td class="px-4 py-3 text-sm text-gray-800 font-medium">ORD-2023-004</td>
+<td class="px-4 py-3 text-sm text-gray-500">2023-10-05</td>
+<td class="px-4 py-3 text-sm text-gray-500">25</td>
+<td class="px-4 py-3 text-sm">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800"> Pending </span>
+</td>
+<td class="px-4 py-3 text-sm text-gray-500">$9,800</td>
+</tr>
+<tr>
+<td class="px-4 py-3 text-sm text-gray-800 font-medium">ORD-2023-005</td>
+<td class="px-4 py-3 text-sm text-gray-500">2023-10-20</td>
+<td class="px-4 py-3 text-sm text-gray-500">12</td>
+<td class="px-4 py-3 text-sm">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800"> Delivered </span>
+</td>
+<td class="px-4 py-3 text-sm text-gray-500">$4,500</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+
+</body></html>
